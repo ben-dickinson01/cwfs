@@ -1,0 +1,10 @@
+# Ignore everything except Agda sources, the README and CI
+*
+!*/
+!*.agda
+!README.md
+!*.agda-lib
+!.gitignore
+!.github
+!.github/workflows
+!.github/workflows/*.yml
