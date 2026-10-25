@@ -17,6 +17,10 @@ record Σ {ℓ₁ ℓ₂ : Level} (A : Set ℓ₁) (B : A → Set ℓ₂) : Set 
 
 open Σ public
 
+infixr 2 _×_
+_×_ : {ℓ₁ ℓ₂ : Level} → (A : Set ℓ₁) → (B : Set ℓ₂) → Set (ℓ₁ ⊔ ℓ₂)
+A × B = Σ A (λ _ → B)
+
 record ⊤ : Set where
     constructor tt
 
