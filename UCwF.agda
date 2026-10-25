@@ -1,3 +1,23 @@
+{-
+The record formalises unityped categories with families (ucwfs), following
+Definition 5 (Section 3.1) of Castellan, Clairambault and Dybjer's paper.
+Differences from the paper:
+* contexts are written Γ, Δ where the paper uses n, m;
+* γ : Sub Δ Γ for a morphism γ : Δ → Γ in C(Δ, Γ);
+* 𝟙 where the paper writes 0 for the terminal object;
+* Γ ▹ where the paper writes s(Γ) for context extension;
+* comprehension is given by the operation ⟨_,_⟩ with β-laws and an η-law, rather than
+  by the universal property (uniqueness of ⟨γ, a⟩); given the β-laws these are equivalent;
+* equalities are propositional; since terms are not indexed by types, no transport is needed;
+* Sub and Tm are not required to be h-sets.
+As in CwF.agda, composition is applicative: θ ∘ γ means first γ, then θ.
+
+UCwF-to-CwF turns a ucwf into a CwF with exactly one type over each context (Ty Γ = ⊤).
+Every CwF law is either refl or the corresponding ucwf law, except the β-law for q:
+its transport is along a path built from the ucwf's β-law for p, so it is removed with
+tr-const (transport in a constant family is the identity).
+-}
+
 {-# OPTIONS --without-K --safe #-}
 
 open import Prelude
@@ -61,11 +81,11 @@ module _ {ℓc ℓs ℓtm : Level} (U : UCwF ℓc ℓs ℓtm) where
     UCwF-to-CwF .CwF.q = λ Γ A → q Γ
     UCwF-to-CwF .CwF.⟨_,_⟩ = λ γ {A} → ⟨_,_⟩ γ
     UCwF-to-CwF .CwF.▹-β₁ = λ γ {A} → ▹-β₁ γ
-    UCwF-to-CwF .CwF.▹-β₂ {Δ} {Γ} γ {A} a = 
-            concat 
-                (tr-const  
-                    (UCwF-to-CwF .CwF.Tm Δ _) 
+    UCwF-to-CwF .CwF.▹-β₂ {Δ} {Γ} γ {A} a =
+            concat
+                (tr-const
+                    (UCwF-to-CwF .CwF.Tm Δ _)
                     _
-                    (q Γ [ ⟨ γ , a ⟩ ])) 
+                    (q Γ [ ⟨ γ , a ⟩ ]))
                 (▹-β₂ γ a)
     UCwF-to-CwF .CwF.▹-η = ▹-η

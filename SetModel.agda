@@ -1,3 +1,15 @@
+{-
+The set model of CwFs: more precisely, the standard model in Agda's universe Set,
+whose "sets" are arbitrary types rather than h-sets.
+* contexts are types in Set, and substitutions are functions;
+* the terminal context is ⊤;
+* a type over Γ is a family Γ → Set, and substitution in types is precomposition;
+* a term of type A over Γ is a dependent function (x : Γ) → A x;
+* context comprehension Γ ▹ A is the Σ-type Σ Γ A, with p and q the projections.
+Every law holds by refl: substitution is composition, and functions, ⊤ and Σ have
+definitional η. In particular all the transports in the term laws reduce away.
+-}
+
 {-# OPTIONS --without-K --safe #-}
 
 open import Prelude

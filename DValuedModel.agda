@@ -1,3 +1,13 @@
+{-
+For a fixed set D, a ucwf in which the single type is interpreted as D.
+* contexts are types in Set, and substitutions are functions;
+* the terminal context is ⊤;
+* a term over Γ is a function Γ → D, and substitution is precomposition;
+* context extension Γ ▹ is Γ × D, with p and q the projections.
+A term with n free variables is an n-ary operation on D. Every law holds by refl,
+by definitional η for functions, ⊤ and Σ.
+-}
+
 {-# OPTIONS --without-K --safe #-}
 
 open import Prelude
