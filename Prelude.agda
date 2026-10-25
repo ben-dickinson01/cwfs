@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --safe #-}
 
 open import Agda.Primitive public
 
@@ -19,12 +19,6 @@ open Σ public
 
 record ⊤ : Set where
     constructor tt
-
-infix 1 _∼_
-_∼_ : {ℓ₁ ℓ₂ : Level} → {A : Set ℓ₁} → {B : A → Set ℓ₂} → (f g : (a : A) → B a) → Set (ℓ₁ ⊔ ℓ₂)
-_∼_ {A = A} f g = (x : A) → f x ≡ g x
-
-postulate eq-htpy : {ℓ₁ ℓ₂ : Level} → {A : Set ℓ₁} → {B : A → Set ℓ₂} → (f g : (a : A) → B a) → f ∼ g → f ≡ g
 
 ap : {ℓ₁ ℓ₂ : Level} → {A : Set ℓ₁} → {B : Set ℓ₂} → (f : A → B) → {x y : A} → (p : x ≡ y) → f x ≡ f y
 ap f refl = refl
