@@ -26,6 +26,9 @@ ap f refl = refl
 tr : {ℓ₁ ℓ₂ : Level} → {A : Set ℓ₁} → (B : A → Set ℓ₂) → {x y : A} → (p : x ≡ y) → B x → B y
 tr B refl ba = ba
 
+tr-const : {ℓ₁ ℓ₂ : Level} → {A : Set ℓ₁} → (B : Set ℓ₂) → {x y : A} → (p : x ≡ y) → (b : B) → tr (λ _ → B) p b ≡ b
+tr-const B refl b = refl
+
 inv : {ℓ₁ : Level} → {A : Set ℓ₁} → {x y : A} → (p : x ≡ y) → y ≡ x
 inv refl = refl
 
