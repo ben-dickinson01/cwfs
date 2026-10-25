@@ -19,4 +19,4 @@ jobs:
           agda --version
 
       - name: Typecheck everything
-        run: agda SetModel.agda
+        run: for f in *.agda; do agda "$f"; done

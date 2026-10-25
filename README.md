@@ -1,3 +1,5 @@
+[![Typecheck](https://github.com/ben-dickinson01/cwfs/actions/workflows/typecheck.yml/badge.svg)](https://github.com/ben-dickinson01/cwfs/actions/workflows/typecheck.yml)
+
 # Categories with Families in Agda
 
 This project formalises the definition of a category with family (CwF) in Agda, together with the set model. It follows the definition in Castellan, Clairambault and Dybjer's *Categories with Families: Unityped, Simply Typed, Dependently Typed* ([arXiv:1904.00827](https://arxiv.org/abs/1904.00827)), Sections 2.2 and 5.1. It sits alongside my formalisation of [Rijke's Introduction to Homotopy Type Theory](https://github.com/ben-dickinson01/rijke-intro-to-hott).
