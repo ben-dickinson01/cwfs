@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-open import Agda.Primitive
+open import Agda.Primitive public
 
 infix 4 _≡_
 data _≡_ {ℓ : Level} {A : Set ℓ} (x : A) : A → Set ℓ 
@@ -31,3 +31,9 @@ ap f refl = refl
 
 tr : {ℓ₁ ℓ₂ : Level} → {A : Set ℓ₁} → (B : A → Set ℓ₂) → {x y : A} → (p : x ≡ y) → B x → B y
 tr B refl ba = ba
+
+inv : {ℓ₁ : Level} → {A : Set ℓ₁} → {x y : A} → (p : x ≡ y) → y ≡ x
+inv refl = refl
+
+concat : {ℓ₁ : Level} → {A : Set ℓ₁} → {x y z : A} → (p : x ≡ y) → (q : y ≡ z) → x ≡ z
+concat refl refl = refl 
